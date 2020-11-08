@@ -1,19 +1,29 @@
 package rocks.zipcodewilmington;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import rocks.zipcodewilmington.animals.Cat;
+import rocks.zipcodewilmington.animals.Dog;
 import rocks.zipcodewilmington.animals.animal_storage.CatHouse;
+import rocks.zipcodewilmington.animals.animal_storage.DogHouse;
+
+import java.util.Date;
 
 /**
  * @author leon on 4/19/18.
  */
 public class CatHouseTest {
+
+    @Before
+    public void setup(){
+        CatHouse.clear();
+    }
     // TODO - Create tests for `void add(Cat cat)`
     @Test
     public void addTest() {
         // given
-        Cat expected = new Cat();
+        Cat expected = new Cat(null, null, 4);
         Integer id = expected.getId();
 
         // when
@@ -34,10 +44,10 @@ public class CatHouseTest {
 
         // when
         CatHouse.remove(id);
-        Cat retrievedCat = CatHouse.getCatById(id);
+//        Cat retrievedCat = CatHouse.getCatById(id);
 
         // then
-        Assert.assertNull(retrievedCat);
+        Assert.assertNull(CatHouse.getCatById(id));
     }
 
 
@@ -56,6 +66,18 @@ public class CatHouseTest {
         // then
         Assert.assertNull(retrievedCat);
     }
+    @Test
+    public void getCatById(){
+        Cat play = new Cat(null, null, 5);
+        Integer id = play.getId();
+        CatHouse.getCatById(id);
+
+        CatHouse.getCatById(id);
+        Cat returnCat = CatHouse.getCatById(id);
+        Assert.assertNull(returnCat);
+
+    }
+
 
     // TODO - Create tests for `Integer getNumberOfCats()`
     @Test

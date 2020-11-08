@@ -6,6 +6,7 @@ import org.junit.Test;
 import rocks.zipcodewilmington.animals.Animal;
 import rocks.zipcodewilmington.animals.Cat;
 import rocks.zipcodewilmington.animals.Mammal;
+import rocks.zipcodewilmington.animals.animal_storage.CatHouse;
 
 import java.util.Date;
 
@@ -77,6 +78,16 @@ public class CatTest {
 
         // then
         Assert.assertEquals(expected, actual);
+    }
+    @Test
+    public void getCatId(){
+        Cat cat = new Cat(null, null, 2);
+
+        int expected = 2;
+        int actual = cat.getId();
+
+        Assert.assertEquals(expected, actual);
+
     }
 
     // TODO - Create test to check Animal inheritance; google search `java instanceof keyword`
